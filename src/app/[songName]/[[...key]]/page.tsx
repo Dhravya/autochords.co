@@ -4,7 +4,6 @@ import Header from '~/app/components/Header'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/app/components/ui/tabs"
 import { notFound } from 'next/navigation'
 import ChordProRenderer from '~/app/components/ChordsRenderer';
-import { BookmarkCheckIcon, BookmarkIcon } from 'lucide-react';
 import SaveSongButton from '~/app/components/SaveSongButton';
 
 
