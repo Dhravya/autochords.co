@@ -10,17 +10,33 @@ import {
 } from "~/app/components/dialog"
 import MicAccess from "./components/micaccess";
 import InputBox from "~/app/components/InputBox";
-import Library from "./components/library";
+import { getServerAuthSession } from "~/server/auth";
+
+interface Song {
+  song_name: string;
+  artist_name: string;
+  song_url: string
+}
 
 
 
-export default function HomePage() {
+export default async function HomePage() {
+  const session = await getServerAuthSession();
+  const response = await fetch(
+    `https://api.autochords.co/get_saved_songs?user_email=${
+      session?.user?.email ?? "guest"
+    }`,
+  );
+  const responseJson = (await response.json()) as {
+    songs?: Song[];
+    error?: string;
+  };
 
   return (
     <main>
       <Header />
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="/auth-illustration.svg" alt="" className="absolute top-0 left-1/2 -translate-x-1/2 md:w-[40%] h-[40%] rotate-0" />
+      <img src="/auth-illustration.svg" alt="" className="absolute top-0 left-1/2 -translate-x-1/2 md:w-[40%] h-[40%] rotate-0 -z-20" />
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src="/features-illustration-02.svg" alt="" className="absolute bottom-24 left-1/2 -translate-x-1/2 md:w-[40%] h-[30%] rotate-12 -z-10" />
       <div className="flex flex-col items-center justify-center w-full min-h-screen tracking-tight ">
@@ -33,7 +49,9 @@ export default function HomePage() {
           <div className="w-full flex items-center justify-center my-8 md:my-0">
             <TabsList className="bg-[#B2B8CB] font-semibold">
               <TabsTrigger value="Search" className="font-bold">SEARCH</TabsTrigger>
-              <TabsTrigger value="Library " className="font-bold" >LIBRARY</TabsTrigger>
+              <TabsTrigger value="Library " className="font-bold" >
+                <a className="w-full h-full" href="/library">LIBRARY</a>
+              </TabsTrigger>
             </TabsList>
           </div>
           <TabsContent className="flex flex-col items-center justify-center" value="Search">
@@ -60,9 +78,6 @@ export default function HomePage() {
             </div>
           </TabsContent>
 
-          <TabsContent value="Library">
-            <Library/>
-          </TabsContent>
         </Tabs>
 
         {/* record button */}
