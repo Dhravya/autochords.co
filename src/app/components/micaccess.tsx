@@ -1,8 +1,12 @@
 'use client';
 
 import React, { useState } from 'react'
+import { useSession } from 'next-auth/react';
 
 function MicAccess() {
+
+  const {data: session} = useSession();
+
   const [isRecording, setIsRecording] = useState(false);
   const [counter, setCounter] = useState(15);
 
@@ -26,11 +30,12 @@ function MicAccess() {
         // Send audio to API endpoint
         const formData = new FormData();
         formData.append('file', audioBlob, 'recording.wav');
-        fetch('/api/endpoint', {
+        fetch('/api/user_recording?user_email=' + session?.user?.email ?? 'guest' , {
           method: 'POST',
           body: formData
         })
           .then(response => {
+            console.log(response.json())
             console.log('Audio sent to API endpoint');
           })
           .catch(error => {

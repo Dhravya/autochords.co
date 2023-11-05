@@ -10,12 +10,12 @@ import {
   DialogTrigger,
 } from "~/app/components/dialog"
 import MicAccess from "./components/micaccess";
-
-
+import InputBox from "~/components/InputBox";
 
 
 
 export default function HomePage() {
+
   return (
     <main>
       <Header />
@@ -35,7 +35,8 @@ export default function HomePage() {
             </TabsList>
           </div>
           <TabsContent className="flex flex-col items-center justify-center" value="Search">
-            <input className=" px-8 font-bold self-center w-full mx-8 md:mx-0 md:w-[40%] items-center rounded-full border-4 border-foreground h-10 my-2 p-2 outline-none bg-background " />
+            <InputBox />
+
             <div className="p-3">
               <Dialog>
                 <DialogTrigger>
