@@ -10,9 +10,11 @@ function MicAccess() {
   const [isRecording, setIsRecording] = useState(false);
   const [counter, setCounter] = useState(15);
 
+  const [key, setKey] = useState("");
+
   const startRecording = () => {
     setIsRecording(true);
-    navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
+    void navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
       const mediaRecorder = new MediaRecorder(stream);
       mediaRecorder.start();
       const audioChunks: BlobPart[] | undefined = [];
@@ -21,9 +23,7 @@ function MicAccess() {
       });
       mediaRecorder.addEventListener("stop", () => {
         const audioBlob = new Blob(audioChunks);
-        const audioUrl = URL.createObjectURL(audioBlob);
-        const audio = new Audio(audioUrl);
-        audio.play();
+
         setIsRecording(false);
         setCounter(15);
 
@@ -35,7 +35,7 @@ function MicAccess() {
           body: formData
         })
           .then(response => {
-            console.log(response.json())
+            console.log(response.json().then((data) => (data as {key: string})).then((data) => setKey(data.key)));
             console.log('Audio sent to API endpoint');
           })
           .catch(error => {
@@ -55,6 +55,7 @@ function MicAccess() {
 
   return (
     <div className={`flex items-center justify-center font-bold`}>
+      <div className='text-white'>Your key: {key}</div>
       <button
         onClick={startRecording}
         disabled={isRecording}
