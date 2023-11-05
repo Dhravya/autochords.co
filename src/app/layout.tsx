@@ -1,7 +1,7 @@
 import "~/styles/globals.css";
 
 import { Darker_Grotesque } from "next/font/google";
-import Provider from "~/components/Provider";
+import Provider from "~/app/components/Provider";
 
 const grot = Darker_Grotesque({
   subsets: ["latin"],

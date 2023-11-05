@@ -5,13 +5,13 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "~/components/ui/dropdown-menu"
+} from "~/app/components/ui/dropdown-menu"
 
 import React from 'react'
 import Image from "next/image"
 import { getServerSession } from "next-auth";
 import { SessionProvider, signIn } from "next-auth/react";
-import Provider from "~/components/Provider";
+import Provider from "~/app/components/Provider";
 import LoginButton from "./LoginButton";
 import LogoutButton from "./LogoutButton";
 

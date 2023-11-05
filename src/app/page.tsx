@@ -1,6 +1,5 @@
 import Header from "./components/Header";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs"
-import { Textarea } from "~/components/ui/textarea"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/app/components/ui/tabs"
 import {
   Dialog,
   DialogContent,
@@ -10,7 +9,7 @@ import {
   DialogTrigger,
 } from "~/app/components/dialog"
 import MicAccess from "./components/micaccess";
-import InputBox from "~/components/InputBox";
+import InputBox from "~/app/components/InputBox";
 import Library from "./components/library";
 
 
@@ -20,12 +19,14 @@ export default function HomePage() {
   return (
     <main>
       <Header />
+      {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src="/auth-illustration.svg" alt="" className="absolute top-0 left-1/2 -translate-x-1/2 md:w-[40%] h-[40%] rotate-0" />
+      {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src="/features-illustration-02.svg" alt="" className="absolute bottom-24 left-1/2 -translate-x-1/2 md:w-[40%] h-[30%] rotate-12 -z-10" />
       <div className="flex flex-col items-center justify-center w-full min-h-screen tracking-tight ">
         <div className="md:w-[40%]">
           <h1 className="font-bold text-6xl text-center text-transparent bg-clip-text bg-gradient-to-b from-white to-white/30">Get chords in your voice for any song</h1>
-          <h2 className="text-[#546089] my-5 font-bold text-2xl text-center leading-5"> Autochords is a musician's best friend. You name the song, we've got the chords personalised just for you.</h2>
+          <h2 className="text-[#546089] my-5 font-bold text-2xl text-center leading-5"> Autochords is a musician&apos;s best friend. You name the song, we&apos;ve got the chords personalised just for you.</h2>
         </div>
 
         <Tabs className="w-full" defaultValue="Search">
