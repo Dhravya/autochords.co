@@ -10,27 +10,9 @@ import {
 } from "~/app/components/dialog"
 import MicAccess from "./components/micaccess";
 import InputBox from "~/app/components/InputBox";
-import { getServerAuthSession } from "~/server/auth";
-
-interface Song {
-  song_name: string;
-  artist_name: string;
-  song_url: string
-}
 
 
-
-export default async function HomePage() {
-  const session = await getServerAuthSession();
-  const response = await fetch(
-    `https://api.autochords.co/get_saved_songs?user_email=${
-      session?.user?.email ?? "guest"
-    }`,
-  );
-  const responseJson = (await response.json()) as {
-    songs?: Song[];
-    error?: string;
-  };
+export default function HomePage() {
 
   return (
     <main>
