@@ -1,26 +1,29 @@
 'use client'
 
 import React from 'react'
-import debounce from 'lodash/debounce';
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 function InputBox() {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState<{ "index": number; "artist": string; "song": string; "url": string; "id": string }[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  let debounceTimeout: any;
-
-  // Replace 'your-api-endpoint' with your actual backend API endpoint
-  const apiUrl = '/api/getSongResults';
+  interface SongResult {
+    index: number;
+    artist: string;
+    song: string;
+    url: string;
+    id: string;
+  }
 
   const getSearchResults = async (query: string) => {
     setIsLoading(true);
+    const apiUrl = '/api/getSongResults';
     const response = await fetch(`${apiUrl}?song_name=${query}`);
-    const data = await response.json();
+    const data = await response.json() as { data: { results: SongResult[] } };
     console.log('data', data)
     setIsLoading(false);
-    setSearchResults(data['data']['results']);
+    setSearchResults(data.data.results);
     console.log(searchResults)
   }
 
@@ -43,7 +46,7 @@ function InputBox() {
         absolute z-10 w-full bg-background rounded-lg shadow-lg p-2 mt-1 top-12'>
             {searchResults.map((result) => (
               <li key={result.id}>
-                <a href={"/" + result.url.split('/')[1]}>
+                <a className='w-full h-full' href={"/" + result.url.split('/')[1]}>
                 {result.song
                   // Remove the last word from the song name
                   .split(' ')
