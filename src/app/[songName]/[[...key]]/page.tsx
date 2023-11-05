@@ -3,6 +3,7 @@ import React from 'react'
 import Header from '~/app/components/Header'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs"
 import { notFound } from 'next/navigation'
+import ChordProRenderer from '~/app/components/ChordsRenderer';
 
 
 type Session = {
@@ -117,9 +118,9 @@ async function Page({ params: { songName, key } }: { params: { songName: string,
                 </TabsList>
               </div>
 
-              <pre>
-                {songDataJson['chords']}
-              </pre>
+              {/* <pre> */}
+                <ChordProRenderer content={songDataJson['chords']} />
+              {/* </pre> */}
             </div>
           </div>
         </Tabs>
