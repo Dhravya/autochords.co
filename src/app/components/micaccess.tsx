@@ -54,7 +54,7 @@ function MicAccess() {
 
 
   return (
-    <div className={`flex items-center justify-center font-bold`}>
+    <div className={`flex flex-col gap-2 items-center justify-center font-bold`}>
       <div className='text-white'>Your key: {key}</div>
       <button
         onClick={startRecording}
