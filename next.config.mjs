@@ -6,9 +6,9 @@ await import("./src/env.mjs");
 
 /** @type {import("next").NextConfig} */
 const config = {
-    eslint: {
-        ignoreDuringBuilds: true,
-      },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 };
 
 export default config;
