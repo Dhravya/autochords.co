@@ -36,17 +36,6 @@ declare module "next-auth" {
  * @see https://next-auth.js.org/configuration/options
  */
 export const authOptions: NextAuthOptions = {
-  callbacks: {
-    /**
-     * @see https://next-auth.js.org/configuration/callbacks#session
-     */
-    async session({ session, user, token }) {
-      console.log('session', session)
-      console.log('user', user)
-      console.log('token', token)
-      return session
-    }
-  },
   providers: [
     GoogleProvider({
       clientId: env.GOOGLE_CLIENT_ID,

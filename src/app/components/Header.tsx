@@ -23,13 +23,15 @@ type Session = {
   }
 } | null
 
-async function Header() {
+async function Header({showWordMark = true, className}: {showWordMark?: boolean; className?: string}) {
   const session: Session = (await getServerSession()) ?? null;
 
   return (
-    <div className="absolute flex top-0 h-16 items-center justify-between pr-8 w-full">
-      <div >
+
+    <div className={"absolute flex top-0 h-16 items-center justify-between pr-8 w-full z-50 " + className}>
+      <div className="flex items-center">
         <Image className="mt-2" width={80} height={80} src="/logo.png" alt="" />
+        {showWordMark && <span className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-white to-white/30">AutoChords</span>}
       </div>
       <DropdownMenu>
         {session ? (
