@@ -11,6 +11,7 @@ import {
 } from "~/app/components/dialog"
 import MicAccess from "./components/micaccess";
 import InputBox from "~/components/InputBox";
+import Library from "./components/library";
 
 
 
@@ -58,7 +59,9 @@ export default function HomePage() {
             </div>
           </TabsContent>
 
-          <TabsContent value="Library"></TabsContent>
+          <TabsContent value="Library">
+            <Library/>
+          </TabsContent>
         </Tabs>
 
         {/* record button */}
