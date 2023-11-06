@@ -1,28 +1,25 @@
-# Create T3 App
+# Autochords
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+![Logo](https://autochords.co/logo.png)
 
-## What's next? How do I make an app with this?
+## Why
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+My friend Sreeram has been playing the guitar since 8 years. When I played some songs with him, we realised that the songs' chords were in the singer's tune, not my tune.
+This is where the idea for AutoChords sparked. "What if there was an app that listens to you and tells you the exact chords that suite your voice for any particular song?"
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+So, we built it this weekend, for both guitar and ukulele https://autochords.co
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+![Autochords](https://i.dhr.wtf/r/Clipboard_Nov_5,_2023_at_7.37 AM.png)
 
-## Learn More
+## What it does
+Autochords utilises machine learning and math to figure out the key of your voice. Then, it searches the vast chord library for the prompted song, and transposes it to your key, which means it makes the chords such that it sounds perfect with your voice, making it ideal to sing along with Guitar and ukulele. It also gives the chord diagrams for both the instruments so that the user can figure out what to play, on the spot.
+They can also save songs for later use, in their own key, so that they don't have to search it up again and again!
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+## Tech Stack
+- NextJS for frontend
+- TailwindCSS for styling
+- MySQL as the database
+- Python with FastAPI as the backend + API
+- AWS amplify as hosting for the frontend NextJS app
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
-
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
-
-## How do I deploy this?
-
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+The final product is available right now and can be used right away. 
