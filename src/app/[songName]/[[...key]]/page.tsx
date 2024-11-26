@@ -27,6 +27,7 @@ async function Page({ params: { songName, key } }: { params: { songName: string,
   }
 
   const songDataJson = await songData.json()
+  console.log(songDataJson)
 
   const songDataSVGsGuitar: any = []
 
